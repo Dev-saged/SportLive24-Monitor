@@ -1,21 +1,30 @@
-# قالب مشروع Android
+# SportLive24 Monitor
 
-يُستخدم كـ**Template** عند إنشاء أي مستودع جديد: GitHub → New repository → Repository template → اختر هذا المستودع.
+مراقبة آلية لموقع https://sport1live24.blogspot.com مع سجل دائم للأخبار المكتشفة.
 
-## ما يأتي جاهزاً
-- **`unpack-zip.yml`** — رفع أي `.zip` في الجذر يُفكّ ويُكوَّم تلقائياً.
-- **`build.yml`** — بناء APK على كل push، وتوقيع ونشر Release تلقائي إذا أضفت أسرار التوقيع.
+## المزايا
+- فحص Blogger Atom وJSON feeds وRSS وSitemap والصفحة الرئيسية.
+- اكتشاف روابط الأرشيف والتصنيفات والمنشورات وقراءة صفحات المنشورات.
+- اعتماد الرابط الأساسي للمنشور (canonical URL) لمنع تكرار الخبر.
+- حفظ سجل الاكتشافات في `data/state.json` ورصد تحديثات المنشورات القديمة.
+- كتابة تقرير كل تشغيل في GitHub Actions Summary.
+- جدولة افتراضية كل 10 دقائق عبر GitHub Actions.
 
-## أسرار التوقيع (اختياري)
-في Settings → Secrets and variables → Actions:
-- `KEYSTORE_BASE64`
-- `SIGNING_STORE_PASSWORD`
-- `SIGNING_KEY_ALIAS`
-- `SIGNING_KEY_PASSWORD`
+## تفعيل التشغيل
+1. ارفع محتويات هذه الحزمة إلى جذر المستودع `Dev-saged/SportLive24-Monitor`.
+2. افتح تبويب **Actions** وفعّل workflows إذا طُلب ذلك.
+3. من **Settings → Actions → General → Workflow permissions** اختر **Read and write permissions**.
+4. شغّل workflow يدوياً أول مرة من **Actions → Sport1Live24 Monitor → Run workflow**، أو انتظر الجدولة.
 
-بدونها: APK يُبنى بمفتاح مؤقت فقط، بلا Release.
+## التشغيل المحلي
+```bash
+python -m pip install -r requirements.txt
+python monitor.py
+```
 
-## الاستخدام
-1. أنشئ مستودعاً جديداً من هذا القالب.
-2. ارفع ملف `.zip` لمشروعك (من الهاتف أو أي مكان) في الجذر.
-3. انتظر — يُفكّ، يُكوَّم، يُبنى، يُنشر تلقائياً.
+## ملاحظات
+- جدولة GitHub Actions كل 10 دقائق تقريبية وقد تتأخر عند ضغط GitHub.
+- لا يتجاوز البرنامج CAPTCHA أو تسجيل الدخول أو قيود الوصول، ولا يعدّل الموقع المستهدف.
+- فشل الوصول لا يعني عدم وجود أخبار.
+- قد يتعذر استخراج التعليقات أو المحتوى المحمّل ديناميكياً أو الروابط المحمية.
+- محتوى الصفحات يعامل كبيانات غير موثوقة، ولا تُنفّذ أي تعليمات تظهر داخله.
