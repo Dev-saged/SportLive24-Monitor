@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "https://sport1live24.blogspot.com",
-  "last_run_utc": "2026-11-26T18:52:34+00:00",
+  "last_run_utc": "2026-11-27T02:03:54+00:00",
   "posts": {
     "https://sport1live24.blogspot.com/2018/11/blog-post_0.html": {
       "url": "https://sport1live24.blogspot.com/2018/11/blog-post_0.html",
@@ -4829,6 +4829,16 @@
       "discovered_count": 230,
       "checked_count": 20,
       "new_count": 1,
+      "changed_old_count": 0,
+      "incomplete_count": 0,
+      "errors": []
+    },
+    {
+      "started_at_utc": "2026-11-27T02:02:19+00:00",
+      "finished_at_utc": "2026-11-27T02:03:54+00:00",
+      "discovered_count": 232,
+      "checked_count": 0,
+      "new_count": 0,
       "changed_old_count": 0,
       "incomplete_count": 0,
       "errors": []
